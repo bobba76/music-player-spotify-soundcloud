@@ -2,7 +2,25 @@ plugins {
     id 'com.android.application'
 }
 
+ext {
+    keystore_password = 'Lngn0125.'
+}
+
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\Robin Lindgren\\.android\\debug.keystore')
+            storePassword keystore_password
+            keyPassword keystore_password
+            keyAlias 'androiddebugkey'
+        }
+        release {
+        storeFile file('C:\\Users\\Robin Lindgren\\.android\\release.keystore')
+            storePassword keystore_password
+            keyPassword keystore_password
+            keyAlias 'androidreleasekey'
+        }
+    }
     namespace 'com.bobba76.player_android'
     compileSdk 32
 
@@ -14,17 +32,25 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 

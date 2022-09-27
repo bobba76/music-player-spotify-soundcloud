@@ -15,8 +15,8 @@ import com.spotify.protocol.types.Track;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String CLIENT_ID = "your_client_id";
-    private static final String REDIRECT_URI = "http://com.yourdomain.yourapp/callback";
+    private static final String CLIENT_ID = "2cb42924b46f458382e0ed2f6f682943";
+    private static final String REDIRECT_URI = "https://localhost:8888/callback";
     private SpotifyAppRemote mSpotifyAppRemote;
 
     @Override
@@ -59,12 +59,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void connected() {
         // Play a playlist
-        mSpotifyAppRemote.getPlayerApi().play("spotify:playlist:37i9dQZF1DX7K31D69s4M1");
+        mSpotifyAppRemote.getPlayerApi().play("spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
+
+        // Subscribe to PlayerState
+        mSpotifyAppRemote.getPlayerApi()
+                .subscribeToPlayerState()
+                .setEventCallback(playerState -> {
+                    final Track track = playerState.track;
+                    if (track != null) {
+                        Log.d("MainActivity", track.name + " by " + track.artist.name);
+                    }
+                });
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        // Aaand we will finish off here.
+        SpotifyAppRemote.disconnect(mSpotifyAppRemote);
     }
 }
