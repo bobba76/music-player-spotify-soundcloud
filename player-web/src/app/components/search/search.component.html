@@ -1,0 +1,15 @@
+<nb-layout>
+  <nb-layout-header fixed>Company Name</nb-layout-header>
+
+  <nb-sidebar>Liked songs</nb-sidebar>
+
+  <nb-layout-column>
+    <nb-card size="small">
+      <nb-list>
+        <nb-list-item *ngFor="let user of users">
+          <nb-user [name]="user.name" [title]="user.title"> </nb-user>
+        </nb-list-item>
+      </nb-list>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>
