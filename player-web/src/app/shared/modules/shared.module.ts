@@ -8,26 +8,16 @@ import {
   NbLayoutModule,
   NbListModule,
   NbSidebarModule,
+  NbThemeModule,
+  NbThemeService,
   NbUserModule
 } from '@nebular/theme';
 
 @NgModule({
-  imports: [
-    // Nebular
-    RouterModule,
-    NbLayoutModule,
-    NbSidebarModule,
-    NbListModule,
-    NbCardModule,
-    NbUserModule,
-    NbButtonModule,
-    NbEvaIconsModule,
-  ],
   exports: [
     CommonModule,
 
     // Nebular
-    RouterModule,
     NbLayoutModule,
     NbSidebarModule,
     NbListModule,

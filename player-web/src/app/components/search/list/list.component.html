@@ -1,0 +1,15 @@
+<nb-layout>
+  <nb-layout-header fixed>Company Name</nb-layout-header>
+
+  <nb-sidebar>
+    Sidebar Content
+    <button nbButton (click)="login()">Login</button>
+  </nb-sidebar>
+
+  <nb-layout-column>
+    <button nbButton>Previous song</button>
+    <button nbButton (click)="togglePlay()">Play</button>
+    <button nbButton>Next song</button>
+    <button nbButton (click)="getAvailableDevices()">Get Devices</button>
+  </nb-layout-column>
+</nb-layout>
